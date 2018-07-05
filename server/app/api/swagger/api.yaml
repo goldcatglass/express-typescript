@@ -1,0 +1,65 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: test
+  description: Typescript express project template
+basePath: /api
+tags:
+  - name: Project Template
+    description: Simple endpoints
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+definitions:
+  ObjectBody:
+    type: object
+    title: object
+    required:
+      - name
+    properties:
+      name:
+        type: string
+        description: The object name
+
+paths:
+  /assets:
+    get:
+      tags:
+        - objects
+      description: Fetch all objects
+      responses:
+        200:
+          description: Returns all objects
+    post:
+      tags:
+        - objects
+      description: Create a new object
+      parameters:
+        - name: body
+          in: body
+          description: number of items to skip
+          required: true
+          schema: 
+            $ref: "#/definitions/ObjectBody"
+      responses:
+        200:
+          description: Returns all examples
+
+  /assets/{id}:
+    get:
+      tags:
+        - objects
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the entity to retrieve
+          type: integer
+      responses:
+        200:
+          description: Return the objects with the specified id
+        404:
+          description: object not 
