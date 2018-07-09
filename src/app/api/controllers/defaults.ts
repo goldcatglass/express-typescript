@@ -16,10 +16,13 @@ export class Controller {
         }
     }
 
-    async create(req: Request, res: Response, next: NextFunction): Promise<void> {
+    async create(
+        req: Request,
+        res: Response,
+        next: NextFunction,
+    ): Promise<void> {
         const result = await DefaultsService.create(req.body.name);
-        res.status(201)
-            .json(result);
+        res.status(201).json(result);
     }
 }
 

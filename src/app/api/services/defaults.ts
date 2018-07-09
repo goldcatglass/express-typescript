@@ -1,14 +1,14 @@
-import logger from '../../../logger'
+import logger from '../../../logger';
 
 interface Default {
-    id: number,
-    name: string
-};
+    id: number;
+    name: string;
+}
 
 let id = 0;
 const fetchs: Default[] = [
     { id: id++, name: 'fetch data 0' },
-    { id: id++, name: 'fetch data 1' }
+    { id: id++, name: 'fetch data 1' },
 ];
 
 export class DefaultsService {
@@ -17,18 +17,18 @@ export class DefaultsService {
         return fetchs;
     }
 
-    async one(id: number): Promise<Default> {
-        logger.info(`fetch one with id ${id}`);
-        return this.all().then(r => r[id])
+    async one(_id: number): Promise<Default> {
+        logger.info(`fetch one with id ${_id}`);
+        return this.all().then(r => r[_id]);
     }
 
     async create(name: string): Promise<Default> {
         logger.info(`create with name ${name}`);
         const fetch: Default = {
             id: id++,
-            name
+            name,
         };
-        fetchs.push(fetch)
+        fetchs.push(fetch);
         return fetch;
     }
 }
