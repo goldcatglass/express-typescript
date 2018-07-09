@@ -3,7 +3,7 @@ import { Application } from 'express';
 import * as path from 'path';
 
 export default (app: Application, routes: (app: Application) => void) => {
-    middleware(path.join(__dirname, 'api.yaml'), app, (err, middleware) => {
+    middleware(path.join(__dirname, '../../../../swagger.yaml'), app, (err, middleware) => {
         // Enable Express' case-sensitive and strict options
         // (so "/entities", "/Entities", and "/Entities/" are all different)
         app.enable('case sensitive routing');
